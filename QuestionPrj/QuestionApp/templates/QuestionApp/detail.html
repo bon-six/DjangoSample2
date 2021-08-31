@@ -1,11 +1,10 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Festival Questionnaire</title>
-</head>
-<boday>
+{% extends ''|add:app_name|add:'/base.html' %}
+
+{% block head %}
     <h1>Question: {{question.question_text}}</h1>
-    
+{% endblock head %}
+
+{% block content %}
     {% if question.choice_set.all %}
     <ul>
         {% for choice in question.choice_set.all %}
@@ -13,5 +12,8 @@
         {% endfor %}
     </ul>
     {% endif %}
-</boday>
-</html>
+    <hr>
+    <a href="{% url ''|add:app_name|add:':home' %}">
+        Back to question list
+    </a>
+{% endblock content %}
