@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Festival Questionnaire</title>
+</head>
+<boday>
+    <h1>Welcome!</h1>
+    <h2>Here is our question list</h2>
+    {% if question_list %}
+    <ol>
+        {% for question in question_list %}
+            <li>
+                <a href="{% url ''|add:app_name|add:':question_detail' question.pk %}">{{question.question_text}}</a>
+            </li>
+        {% endfor %}
+    </ol>
+    {% endif %}
+</boday>
+</html>

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Festival Questionnaire</title>
+</head>
+<boday>
+    <h1>Question: {{question.question_text}}</h1>
+    
+    {% if question.choice_set.all %}
+    <ul>
+        {% for choice in question.choice_set.all %}
+            <li>{{choice.choice_text}}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+</boday>
+</html>
