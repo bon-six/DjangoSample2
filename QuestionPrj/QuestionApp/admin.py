@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Question, Choice, Votes
+from .models import Question, Choice, Vote
 
 class ReadOnlyAdminMixin:
     def has_add_permission(self, request):
@@ -22,6 +22,6 @@ class QuestionAdmin(admin.ModelAdmin):
 admin.site.register(Question, QuestionAdmin)
 
 
-class VotesAdmin(ReadOnlyAdminMixin, admin.ModelAdmin):
+class VoteAdmin(ReadOnlyAdminMixin, admin.ModelAdmin):
     list_display = ('voter_name', 'vote_date', 'choice')
-admin.site.register(Votes, VotesAdmin)
+admin.site.register(Vote, VoteAdmin)

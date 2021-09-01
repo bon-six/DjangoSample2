@@ -2,7 +2,7 @@ from django.http.response import Http404, HttpResponse
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView
 
-from .models import Question, Choice, Votes
+from .models import Question, Choice, Vote
 from .apps import QuestionappConfig
 
 

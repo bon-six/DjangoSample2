@@ -2,7 +2,7 @@
 
 {% block head %}
     <h1>Question: {{question.question_text}}</h1>
-{% endblock head %}
+{% endblock %}
 
 {% block content %}
     {% if question.choice_set.all %}
@@ -16,4 +16,4 @@
     <a href="{% url ''|add:app_name|add:':home' %}">
         Back to question list
     </a>
-{% endblock content %}
+{% endblock %}
