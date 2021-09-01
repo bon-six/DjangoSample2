@@ -1,5 +1,11 @@
 {% extends ''|add:app_name|add:'/base.html' %}
- 
+{% load static %}
+{% block banner %}
+<div>
+    <img src="{% static ''|add:app_name|add:'/img/art-questionnaire.png' %}"/>
+</div>
+{% endblock %}
+
 {% block head %}
     <h1>Welcome!</h1>
     <h2>Here is our question list</h2>

@@ -1,12 +1,21 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
 <head>
     <title>Festival Questionnaire</title>
+    <link href="{% static ''|add:app_name|add:'/css/style.css' %}" rel="stylesheet">
 </head>
 <boday>
+    {% block banner %}
+    {% endblock %}
     <header>
-        {% block head %}
-        {% endblock head %}
+        <div class="nav-left">
+            {% block head %}
+            {% endblock head %}
+        </div>
+        <div class="nav-right">
+            <a href="{% url ''|add:app_name|add:':home' %}">home</a>
+        </div>
     </header>
     <div>
         {% block content %}
