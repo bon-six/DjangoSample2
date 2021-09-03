@@ -65,8 +65,10 @@ class QuestionAppTest(TestCase):
         self.assertEqual(response.status_code, 404)
 
     def test_default_url(self):
+        response=self.client.get(reverse('QuestionApp:default'))
+        self.assertEqual(response.status_code, 200)
         response=self.client.get('/index.html')
-        self.assertEqual(response.status_code, 404)
+        self.assertEqual(response.status_code, 200)
 
     def test_invalid_url(self):
         response=self.client.get('/home.html')
