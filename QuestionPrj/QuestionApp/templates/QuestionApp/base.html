@@ -6,12 +6,14 @@
     <link href="{% static ''|add:app_name|add:'/css/style.css' %}" rel="stylesheet">
 </head>
 <boday>
-    {% block banner %}
-    {% endblock %}
     <header>
+        <div>
+        {% block banner %}
+        {% endblock %}
+        </div>
         <div class="nav-left">
-            {% block head %}
-            {% endblock head %}
+            {% block content_header %}
+            {% endblock content_header %}
         </div>
         <div class="nav-right">
             <a href="{% url ''|add:app_name|add:':home' %}">home</a>

@@ -1,7 +1,12 @@
 {% extends ''|add:app_name|add:'/base.html' %}
+{% load static %}
 
-{% block head %}
-    <h1>Question: {{question.question_text}}</h1>
+{% block banner %}
+    <img class="img2" src="{% static ''|add:app_name|add:'/img/clip_question.png' %}"/>
+{% endblock %}
+
+{% block content_header %}
+    <h2>Question: {{question.question_text}}</h2>
 {% endblock %}
 
 {% block content %}
@@ -13,7 +18,7 @@
     </ul>
     {% endif %}
     <hr>
-    <a href="{% url ''|add:app_name|add:':home' %}">
-        Back to question list
+    <a href="{% url ''|add:app_name|add:':vote_result' question.pk %}">
+        check vote result
     </a>
 {% endblock %}

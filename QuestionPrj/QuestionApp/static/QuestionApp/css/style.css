@@ -16,8 +16,21 @@ header {
     display: flex;
     align-items: flex-end;
 }
-img{
+.img1{
     width: 100px;
     height: auto;
     float: left;
+}
+.img2{
+    width: 50px;
+    height: auto;
+    float: left;
+}
+.flex-wrapper{
+    display:flex;
+}
+.highlight-red {
+    color:red;
+    font-weight: bold;
+    font-size: 1.2em;
 }

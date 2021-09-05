@@ -1,12 +1,11 @@
 {% extends ''|add:app_name|add:'/base.html' %}
 {% load static %}
+
 {% block banner %}
-<div>
-    <img src="{% static ''|add:app_name|add:'/img/art-questionnaire.png' %}"/>
-</div>
+    <img class="img1" src="{% static ''|add:app_name|add:'/img/art-questionnaire.png' %}"/>
 {% endblock %}
 
-{% block head %}
+{% block content_header %}
     <h1>Welcome!</h1>
     <h2>Here is our question list</h2>
 {% endblock %}
@@ -21,6 +20,27 @@
                 </a>
             </li>
         {% endfor %}
+
     </ol>
+    <div>
+        <a href="{% url ''|add:app_name|add:':home' %}">
+            Participate the questionnaire
+        </a>
+    </div>
     {% endif %}
+    <hr>
+    <ul>
+        {% for comment in comment_list %}
+            <li>
+                <a href="{% url ''|add:app_name|add:':view_comment' comment.pk %}">
+                    {{comment.comment_title}} by {{comment.user_name}}
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+    <div>
+        <a href="{% url ''|add:app_name|add:':add_comment' %}">
+            leave a comment
+        </a> 
+    </div>
 {% endblock %}

@@ -1,5 +1,8 @@
 from django.db import models
+from django.urls import reverse, reverse_lazy
 import datetime
+
+from .apps import QuestionappConfig
 
 # Create your models here.
 class Question(models.Model):
@@ -21,8 +24,17 @@ class Vote(models.Model):
     class Meta:
         verbose_name_plural = "Votes"
     def __str__(self):
-        return self.voter_name+' at: '+datetime.datetime.strftime(self.vote_date, "%d %B %Y")
+        return self.voter_name+': '+datetime.datetime.strftime(self.vote_date, "%d %B %Y")
 
+class Comment(models.Model):
+    user_name = models.CharField(max_length=50)
+    comment_title = models.CharField(max_length=200)
+    comment_content = models.TextField()
+    comment_date = models.DateTimeField('date&time')
+    def __str__(self):
+        return self.comment_title+' by '+self.user_name
+    def get_absolute_url(self):
+        return reverse_lazy(QuestionappConfig.name+':home')
 
 
 
