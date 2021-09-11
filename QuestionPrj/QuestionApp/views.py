@@ -2,7 +2,9 @@ from django.http.response import Http404, HttpResponse
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic import ListView, DetailView
 from django.views.generic.edit import CreateView, FormView, UpdateView, DeleteView
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy, reverse
+from django.core.exceptions import PermissionDenied
 from django.db import transaction
 from django.utils import timezone
 
@@ -47,30 +49,45 @@ class CommentDetailView (DetailView):
         context['app_name'] = QuestionappConfig.name
         return context
 
-class CommentAddView (CreateView):
+class CommentAddView (LoginRequiredMixin, CreateView):
     model = Comment
     template_name = QuestionappConfig.name+'/new_comment.html'
-    fields = '__all__'
+    fields = ['comment_title','comment_content']
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['app_name'] = QuestionappConfig.name
         return context
 
-class CommentUpdateView (UpdateView):
+    def form_valid(self, form):
+        form.instance.user_name = self.request.user
+        form.instance.comment_date = timezone.now()
+        return super().form_valid(form)
+
+class CommentUpdateView (LoginRequiredMixin, UpdateView):
     model = Comment
     template_name = QuestionappConfig.name+'/new_comment.html'
     fields = ['comment_title', 'comment_content']
+    
+    def get(self, request, *args, **kwargs):
+        if (not request.user) or (str(request.user) != self.get_object().user_name):
+            raise PermissionDenied
+        return super().get(request, args, kwargs)
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['app_name'] = QuestionappConfig.name
         return context
 
-class CommentDeleteView (DeleteView):
+class CommentDeleteView (LoginRequiredMixin, DeleteView):
     model = Comment
     template_name = QuestionappConfig.name+'/delete_comment.html'
-    
+
+    def get(self, request, *args, **kwargs):
+        if (not request.user) or (str(request.user) != self.get_object().user_name):
+            raise PermissionDenied
+        return super().get(request, args, kwargs)
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['app_name'] = QuestionappConfig.name

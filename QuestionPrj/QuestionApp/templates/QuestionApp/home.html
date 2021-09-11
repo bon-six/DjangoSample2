@@ -6,8 +6,13 @@
 {% endblock %}
 
 {% block content_header %}
-    <h1>Welcome!</h1>
-    <h2>Here is our question list</h2>
+    <h1>Welcome!<br>
+    Here is our question list</h1>
+    {% if user.is_authenticated %}
+        <p><span>Hi {{ user.username}}.</span> &ensp; <span><a href="{% url 'logout' %}">Logout</a></span></p>
+    {% else %}
+        <p><span><a href="{% url 'my_login' %}">Log In</a></span>&ensp;</p>
+    {% endif %}
 {% endblock %}
 
 {% block content %}

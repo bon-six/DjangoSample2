@@ -16,7 +16,6 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
-
 admin.site.site_header = 'Festival Questionnaire admin'
 admin.site.site_title = 'Festival Questionnaire'
 admin.site.site_url = 'http://localhost:8000/'
@@ -25,5 +24,7 @@ admin.empty_value_display = '**Empty**'
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',include('QuestionApp.urls'))
+    path('accounts/login/',include('user.urls')),
+    path('accounts', include('django.contrib.auth.urls')),
+    path('',include('QuestionApp.urls')),
 ]

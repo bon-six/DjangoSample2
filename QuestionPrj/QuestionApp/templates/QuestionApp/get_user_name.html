@@ -17,8 +17,8 @@
     <p>Please give us your name first:</p>
     <form action="" method="POST"> {% csrf_token %}
         <fieldset>
-            <label for="user_name">Your full name:</label>
-            <input type="text", name="user_name", id="user_name"><br>
+            <label for="user_name">Your name</label>
+            <input type="text" name="user_name" id="user_name" maxlength="100">
         </fieldset>
         <input type="submit" value="start">
     </form>
