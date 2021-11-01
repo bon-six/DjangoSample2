@@ -1,0 +1,17 @@
+{% extends 'QuestionApp/base.html' %}
+{% load static %}
+
+{% block banner %}
+    <img class="img2" src="{% static 'QuestionApp/img/clip_question.png' %}"/>
+{% endblock %}
+
+{% block content_header %}
+    <h2>Please sign up a new account with us</h2>
+{% endblock %}
+
+{% block content %}
+    <form method="post">    {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value='Sign up'>
+    </form>
+{% endblock content %}

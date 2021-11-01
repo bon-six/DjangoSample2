@@ -1,0 +1,1 @@
+web gunicorn QuestionPrj.wsgi --log-file -
