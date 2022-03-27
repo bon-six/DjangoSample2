@@ -1,0 +1,20 @@
+{% extends ''|add:app_name|add:'/base.html' %}
+{% load static %}
+
+{% block banner %}
+    <img class="img1" src="{% static ''|add:app_name|add:'/img/art-questionnaire.png' %}"/>
+{% endblock %}
+
+{% block content_header %}
+    <h2>{{ question.question_text }}</h2>
+{% endblock %}
+
+{% block content %}
+    {% if error_msg %}
+        <p>! {{error_msg}} </p>
+    {% endif %}
+    <form action="" method="post"> {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Vote">
+    </form>
+{% endblock %}

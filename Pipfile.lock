@@ -1,11 +1,11 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "19034617aa02f0fb607d6b00ed0a45a5303324ae390e9d436644cd98e5b472ae"
+            "sha256": "616aebf2ce92d4c5873c3253ea30b588e7f789544817e311c75538e19ce5937f"
         },
         "pipfile-spec": 6,
         "requires": {
-            "python_version": "3.9"
+            "python_version": "3.10"
         },
         "sources": [
             {
@@ -26,11 +26,11 @@
         },
         "django": {
             "hashes": [
-                "sha256:7f92413529aa0e291f3be78ab19be31aefb1e1c9a52cd59e130f505f27a51f13",
-                "sha256:f27f8544c9d4c383bbe007c57e3235918e258364577373d4920e9162837be022"
+                "sha256:2485eea3cc4c3bae13080dee866ebf90ba9f98d1afe8fda89bfb0eb2e218ef86",
+                "sha256:7cd8e8a3ed2bc0dfda05ce1e53a9c81b30eefd7aa350e538a18884475e4d4ce2"
             ],
             "index": "pypi",
-            "version": "==3.2.6"
+            "version": "==4.0.1"
         },
         "gunicorn": {
             "hashes": [
@@ -40,20 +40,29 @@
             "index": "pypi",
             "version": "==20.1.0"
         },
-        "pytz": {
+        "setuptools": {
             "hashes": [
-                "sha256:83a4a90894bf38e243cf052c8b58f381bfe9a7a483f6a9cab140bc7f702ac4da",
-                "sha256:eb10ce3e7736052ed3623d49975ce333bcd712c7bb19a58b9e2089d4057d0798"
+                "sha256:2404879cda71495fc4d5cbc445ed52fdaddf352b36e40be8dcc63147cb4edabe",
+                "sha256:68eb94073fc486091447fcb0501efd6560a0e5a1839ba249e5ff3c4c93f05f90"
             ],
-            "version": "==2021.1"
+            "markers": "python_version >= '3.7'",
+            "version": "==60.5.0"
         },
         "sqlparse": {
             "hashes": [
-                "sha256:017cde379adbd6a1f15a61873f43e8274179378e95ef3fede90b5aa64d304ed0",
-                "sha256:0f91fd2e829c44362cbcfab3e9ae12e22badaa8a29ad5ff599f9ec109f0454e8"
+                "sha256:0c00730c74263a94e5a9919ade150dfc3b19c574389985446148402998287dae",
+                "sha256:48719e356bb8b42991bdbb1e8b83223757b93789c00910a616a071910ca4a64d"
             ],
             "markers": "python_version >= '3.5'",
-            "version": "==0.4.1"
+            "version": "==0.4.2"
+        },
+        "tzdata": {
+            "hashes": [
+                "sha256:3eee491e22ebfe1e5cfcc97a4137cd70f092ce59144d81f8924a844de05ba8f5",
+                "sha256:68dbe41afd01b867894bbdfd54fa03f468cfa4f0086bfb4adcd8de8f24f3ee21"
+            ],
+            "markers": "sys_platform == 'win32'",
+            "version": "==2021.5"
         },
         "whitenoise": {
             "hashes": [

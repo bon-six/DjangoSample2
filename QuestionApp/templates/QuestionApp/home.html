@@ -1,0 +1,56 @@
+{% extends ''|add:app_name|add:'/base.html' %}
+{% load static %}
+
+{% block banner %}
+    <img class="img1" src="{% static ''|add:app_name|add:'/img/art-questionnaire.png' %}"/>
+{% endblock %}
+
+{% block content_header %}
+    <h1>Welcome!<br>
+    Here is our question list</h1>
+    {% if user.is_authenticated %}
+        <p><span>Hi {{ user.username}}.</span> &ensp; <span><a href="{% url 'logout' %}">Logout</a></span></p>
+    {% else %}
+        <p>
+            <span><a href="{% url 'my_login' %}">Log In</a></span>&ensp;
+            <span><a href="{% url 'my_signup' %}">Sign up</a></span>
+        </p>
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+    {% if question_list %}
+    <ol>
+        {% for question in question_list %}
+            <li>
+                <a href="{% url ''|add:app_name|add:':question_detail' question.pk %}">
+                    {{question.question_text}}
+                </a>
+            </li>
+        {% endfor %}
+
+    </ol>
+    <div>
+        <a href="{% url ''|add:app_name|add:':start-voting' %}">
+            Participate the questionnaire
+        </a>
+    </div>
+    {% endif %}
+    <hr>
+    {% if comment_list %}
+    <ul>
+        {% for comment in comment_list %}
+            <li>
+                <a href="{% url ''|add:app_name|add:':view_comment' comment.pk %}">
+                    {{comment.comment_title}} by {{comment.user_name}}
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    <div>
+        <a href="{% url ''|add:app_name|add:':add_comment' %}">
+            leave a comment
+        </a> 
+    </div>
+{% endblock %}

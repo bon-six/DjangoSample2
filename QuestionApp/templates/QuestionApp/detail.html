@@ -1,0 +1,24 @@
+{% extends ''|add:app_name|add:'/base.html' %}
+{% load static %}
+
+{% block banner %}
+    <img class="img2" src="{% static ''|add:app_name|add:'/img/clip_question.png' %}"/>
+{% endblock %}
+
+{% block content_header %}
+    <h2>Question: {{question.question_text}}</h2>
+{% endblock %}
+
+{% block content %}
+    {% if question.choice_set.all %}
+    <ul>
+        {% for choice in question.choice_set.all %}
+            <li>{{choice.choice_text}}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    <hr>
+    <a href="{% url ''|add:app_name|add:':vote_result' question.pk %}">
+        check vote result
+    </a>
+{% endblock %}
